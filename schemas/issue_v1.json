@@ -1,0 +1,254 @@
+{
+  "$defs": {
+    "Card": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "title": "Event Id",
+          "type": "string"
+        },
+        "revision": {
+          "title": "Revision",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "priority": {
+          "enum": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "topic": {
+          "title": "Topic",
+          "type": "string"
+        },
+        "importance": {
+          "additionalProperties": true,
+          "title": "Importance",
+          "type": "object"
+        },
+        "applicability": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Applicability",
+          "type": "array"
+        },
+        "organizer_labels": {
+          "additionalProperties": true,
+          "title": "Organizer Labels",
+          "type": "object"
+        },
+        "facts": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Facts",
+          "type": "array"
+        },
+        "attack_profile": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Attack Profile",
+          "type": "array"
+        },
+        "claims": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Claims",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "lead": {
+          "title": "Lead",
+          "type": "string"
+        },
+        "without_ai": {
+          "title": "Without Ai",
+          "type": "boolean"
+        },
+        "update_reasons": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Update Reasons",
+          "type": "array"
+        },
+        "previous_issue_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Previous Issue Id"
+        },
+        "compact": {
+          "default": false,
+          "title": "Compact",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "event_id",
+        "revision",
+        "title",
+        "priority",
+        "topic",
+        "importance",
+        "applicability",
+        "claims",
+        "sources",
+        "lead",
+        "without_ai",
+        "update_reasons"
+      ],
+      "title": "Card",
+      "type": "object"
+    },
+    "Period": {
+      "additionalProperties": false,
+      "properties": {
+        "start": {
+          "title": "Start",
+          "type": "string"
+        },
+        "end": {
+          "title": "End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "title": "Period",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "issue_v1",
+      "default": "issue_v1",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "issue_id": {
+      "title": "Issue Id",
+      "type": "string"
+    },
+    "audience": {
+      "enum": [
+        "tech",
+        "management"
+      ],
+      "title": "Audience",
+      "type": "string"
+    },
+    "period": {
+      "$ref": "#/$defs/Period"
+    },
+    "generated_at": {
+      "title": "Generated At",
+      "type": "string"
+    },
+    "corpus_id": {
+      "title": "Corpus Id",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "baseline",
+        "fake",
+        "replay",
+        "llm",
+        "hybrid"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "revisions": {
+      "additionalProperties": true,
+      "title": "Revisions",
+      "type": "object"
+    },
+    "cards": {
+      "items": {
+        "$ref": "#/$defs/Card"
+      },
+      "title": "Cards",
+      "type": "array"
+    },
+    "summary": {
+      "items": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "title": "Summary",
+      "type": "array"
+    },
+    "statistics": {
+      "additionalProperties": true,
+      "title": "Statistics",
+      "type": "object"
+    },
+    "comparison": {
+      "additionalProperties": true,
+      "title": "Comparison",
+      "type": "object"
+    },
+    "funnel": {
+      "additionalProperties": true,
+      "title": "Funnel",
+      "type": "object"
+    },
+    "limitations": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Limitations",
+      "type": "array"
+    }
+  },
+  "required": [
+    "issue_id",
+    "audience",
+    "period",
+    "generated_at",
+    "corpus_id",
+    "mode",
+    "revisions",
+    "cards",
+    "summary",
+    "statistics",
+    "comparison",
+    "funnel",
+    "limitations"
+  ],
+  "title": "Issue",
+  "type": "object"
+}

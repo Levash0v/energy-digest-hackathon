@@ -1,0 +1,113 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "item_id": {
+      "title": "Item Id",
+      "type": "string"
+    },
+    "language": {
+      "default": "unknown",
+      "title": "Language",
+      "type": "string"
+    },
+    "primary_topic": {
+      "enum": [
+        "vulnerabilities",
+        "exploitation",
+        "incidents",
+        "malware_campaigns",
+        "patches_releases",
+        "infrastructure",
+        "development",
+        "ai_security",
+        "security_management",
+        "regulation_compliance",
+        "research",
+        "consumer_tech",
+        "marketing",
+        "other",
+        "industrial_security"
+      ],
+      "title": "Primary Topic",
+      "type": "string"
+    },
+    "topics": {
+      "items": {
+        "enum": [
+          "vulnerabilities",
+          "exploitation",
+          "incidents",
+          "malware_campaigns",
+          "patches_releases",
+          "infrastructure",
+          "development",
+          "ai_security",
+          "security_management",
+          "regulation_compliance",
+          "research",
+          "consumer_tech",
+          "marketing",
+          "other",
+          "industrial_security"
+        ],
+        "type": "string"
+      },
+      "maxItems": 15,
+      "minItems": 1,
+      "title": "Topics",
+      "type": "array"
+    },
+    "event_type": {
+      "enum": [
+        "vulnerability_disclosure",
+        "patch_release",
+        "exploitation_report",
+        "incident",
+        "malware_campaign",
+        "research_report",
+        "product_release",
+        "end_of_support",
+        "service_outage",
+        "regulation_update",
+        "guidance",
+        "event_announcement",
+        "advertising",
+        "other"
+      ],
+      "title": "Event Type",
+      "type": "string"
+    },
+    "vendors": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 30,
+      "title": "Vendors",
+      "type": "array"
+    },
+    "products": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 30,
+      "title": "Products",
+      "type": "array"
+    },
+    "versions": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 30,
+      "title": "Versions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "item_id",
+    "primary_topic",
+    "topics",
+    "event_type"
+  ],
+  "title": "Classification",
+  "type": "object"
+}

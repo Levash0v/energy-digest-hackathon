@@ -1,0 +1,226 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "text_ru": {
+          "maxLength": 600,
+          "minLength": 8,
+          "title": "Text Ru",
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        }
+      },
+      "required": [
+        "text_ru",
+        "evidence"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "EventDate": {
+      "additionalProperties": false,
+      "properties": {
+        "date_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Text"
+        },
+        "quote": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quote"
+        }
+      },
+      "title": "EventDate",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 300,
+          "minLength": 8,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "item_id",
+        "quote"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Signal": {
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 300,
+          "minLength": 8,
+          "title": "Quote",
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "exploited_in_wild",
+            "public_exploit",
+            "ransomware_use",
+            "incident_operational_disruption",
+            "incident_data_breach",
+            "supply_chain",
+            "security_release",
+            "end_of_support",
+            "critical_defect",
+            "breaking_change",
+            "service_outage",
+            "license_change",
+            "major_release",
+            "regulation_in_force",
+            "regulation_draft",
+            "regulation_guidance",
+            "remote_unauth",
+            "no_fix_available"
+          ],
+          "title": "Type",
+          "type": "string"
+        },
+        "date_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Date Text"
+        }
+      },
+      "required": [
+        "item_id",
+        "quote",
+        "type"
+      ],
+      "title": "Signal",
+      "type": "object"
+    },
+    "VersionRange": {
+      "additionalProperties": false,
+      "properties": {
+        "product_text": {
+          "maxLength": 150,
+          "minLength": 1,
+          "title": "Product Text",
+          "type": "string"
+        },
+        "affected_text": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Affected Text",
+          "type": "string"
+        },
+        "fixed_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Fixed Text"
+        },
+        "quote": {
+          "maxLength": 300,
+          "minLength": 8,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "product_text",
+        "affected_text",
+        "quote"
+      ],
+      "title": "VersionRange",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "item_id": {
+      "title": "Item Id",
+      "type": "string"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "maxItems": 6,
+      "title": "Claims",
+      "type": "array"
+    },
+    "importance_signals": {
+      "items": {
+        "$ref": "#/$defs/Signal"
+      },
+      "maxItems": 20,
+      "title": "Importance Signals",
+      "type": "array"
+    },
+    "version_ranges": {
+      "items": {
+        "$ref": "#/$defs/VersionRange"
+      },
+      "maxItems": 30,
+      "title": "Version Ranges",
+      "type": "array"
+    },
+    "event_date": {
+      "$ref": "#/$defs/EventDate"
+    },
+    "insufficient_content": {
+      "default": false,
+      "title": "Insufficient Content",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "item_id"
+  ],
+  "title": "Extraction",
+  "type": "object"
+}
