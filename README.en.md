@@ -62,4 +62,4 @@ Python 3.12, pydantic, httpx, SQLite, FastAPI, a static HTML/CSS/JS frontend, an
 
 ## Team and license
 
-Team Truffle («Трюфель»). Original text, schemas, synthetic examples, and screenshot presentation are licensed under [CC BY 4.0](LICENSE). Third-party quotations and material visible in screenshots are excluded from that license.
+Team Truffle («Трюфель»); Maksim is responsible for the prototype's codebase. Original text, schemas, synthetic examples, and screenshot presentation are licensed under [CC BY 4.0](LICENSE). Third-party quotations and material visible in screenshots are excluded from that license.
